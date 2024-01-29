@@ -1,0 +1,41 @@
+{% load static %}
+<nav>
+  <div class="d-flex align-items-center">
+    <img src="{% static 'images/logo.png' %}" alt="logo" width="50" height="50" class="d-inline-block align-text-top">
+    <h2 class="BrandName"><a href="{% url 'homepage' %}">JB's Corner</a></h2>
+  </div>
+  <ul>
+    <li><a href="{% url 'homepage' %}">Home</a></li>
+    {% if not user.is_superuser %}
+      <li><a href="{% url 'homepage' %}#about">About us</a></li>
+    {% endif %}
+    <li class="dropdown-toggle" id="productToggle"><a href="{% url 'homepage' %}#fer">Product</a>
+      <ul class="dropdown">
+        <li><a href="{% url 'childpage' %}">Child Costume</a></li>
+        <li><a href="{% url 'adultpage' %}">Adult Costume</a></li>
+      </ul>
+    </li>
+    {% if user.is_authenticated %}
+      <li class="dropdown-toggle" id="productToggle">
+        {% if profile_data.profile %}
+          <img src="{{ profile_data.profile }}" alt="Profile" width="30" height="30" class="rounded-circle">
+        {% else %}
+          <img src="{% static 'images/default_profile.png' %}" alt="Profile" width="30" height="30" class="rounded-circle">
+        {% endif %}
+        <span class="ml-2">{{ user.username }}</span>
+        <ul class="dropdown">
+          <li><a href="{% url 'profile' %}">Profile</a></li>
+          <li><a href="{% url 'bookmarked' %}">Bookmark</a></li>
+          <li>
+            <form method="post">
+              {% csrf_token %}
+              <a type="submit" href="{% url 'logout' %}">Logout</a>
+            </form>
+          </li>
+        </ul>
+      </li>
+    {% else %}
+      <li><a href="{% url 'Login' %}">Login/Register</a></li>
+    {% endif %}
+  </ul>
+</nav>

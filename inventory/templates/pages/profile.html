@@ -1,0 +1,72 @@
+{% extends "pages/index.html" %} 
+{% load static %} 
+{% block content %}
+    <section style="background-color: #eee;">
+        <div class="container  py-5">
+            <div class="row ">
+                    <div class="card position-static z-index-1 mb-4">
+                        <div class="card-body" >
+                            <div class="card mb-4 position-static z-index-1">
+                                <div class="card-body text-center">
+                                    {% if profile_data.profile %}
+                                    <img src="{{ profile_data.profile }}" alt="Profile Image" id="rounded-circle" class="rounded-circle img-fluid">
+                                    {% else %}
+                                    <img src="{% static 'images/default_profile.png' %}" alt="default-avatar"
+                                        class="rounded-circle img-fluid" style="width: 150px;">
+                                    {% endif %}
+                                    <div class="text-center" id="Status">
+                                        {% if profile_data.status == 'staff' %}
+                                            <p class="status">Staff</p>
+                                        {% elif profile_data.status == 'superuser' %}
+                                            <p class="status">Superuser</p>
+                                        {% else %}
+                                            <p class="status">Customer</p>
+                                        {% endif %}
+                                    </div>
+                                    <div class="d-flex justify-content-center mb-2">
+                                        <a href="{% url 'editprofile' %}" class="btn btn-primary">Edit Profile</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="id_full_name" class="form-label">Full Name:</label>
+                                <p class="text-muted mb-0">{{ profile_data.full_name }}</p>
+                            </div>
+                            <hr>
+                            <div class="mb-3">
+                                <label for="id_email" class="form-label">Email:</label>
+                                <p class="text-muted mb-0">{{ profile_data.email }}</p>
+                            </div>
+                            <hr>
+                            <div class="mb-3">
+                                <label for="id_username" class="form-label">Username:</label>
+                                <p class="text-muted mb-0">{{ profile_data.username }}</p>
+                            </div>
+                            <hr>
+                            <div class="mb-3">
+                                <label for="id_contact_number" class="form-label">Phone:</label>
+                                <p class="text-muted mb-0">{{ profile_data.contact_number }}</p>
+                            </div>
+                            <hr>
+                            <div class="mb-3">
+                                <label for="id_address" class="form-label">Address:</label>
+                                <p class="text-muted mb-0">{{ profile_data.address }}</p>
+                            </div>
+                            <hr>
+                            <div class="mb-3">
+                                <label for="id_birthdate" class="form-label">Birth Date:</label>
+                                <p class="text-muted mb-0">{{ profile_data.birthdate }}</p>
+                            </div>
+                            <hr>
+                            <div class="mb-3">
+                                <label for="id_date_created" class="form-label">Date Created:</label>
+                                <p class="text-muted mb-0">{{ profile_data.date_created }}</p>
+                            </div>
+                            <hr>   
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endblock %}

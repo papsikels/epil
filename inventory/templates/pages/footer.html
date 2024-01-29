@@ -1,0 +1,35 @@
+{% load static %}
+<footer
+  class="bg-body-tertiary text-white text-center py-2"
+  data-bs-theme="dark"
+>
+  <p>&copy; 2023 JB's Corner. All rights reserved.</p>
+  <div class="wrapper">
+    <div class="facebookButton">
+      <div class="icon">
+        <a href="https://www.facebook.com/yourjbscorner">
+          <img
+            src="{% static 'svg/Facebook.svg'%}"
+            alt="svg"
+            width="30"
+            height="30"
+          />
+        </a>
+      </div>
+      <span>Facebook</span>
+    </div>
+    <div class="shopeeButton">
+      <div class="icon">
+        <a href="https://shopee.ph/doolebrie027">
+          <img
+            src="{% static 'svg/shopee.svg'%}"
+            alt="svg"
+            width="30"
+            height="30"
+          />
+        </a>
+      </div>
+      <span>Shopee</span>
+    </div>
+  </div>
+</footer>

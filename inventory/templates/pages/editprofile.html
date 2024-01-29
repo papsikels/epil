@@ -1,0 +1,103 @@
+{% extends "pages/index.html" %} 
+{% load static %} 
+{% block content %}
+        <section style="background-color: #eee;">
+            <div class="container py-5">
+                <div class="row">
+                        <div class="card mb-4 position-static z-index-1">
+                            <div class="card-body">
+                                <div class="col-lg-">
+                                    <div class="card mb-4 position-static z-index-1">
+                                        <div class="card-body text-center">
+                                            {% if profile_data.profile %}
+                                            <img src="{{ profile_data.profile }}" alt="Profile Image" id="rounded-circle" class="rounded-circle img-fluid">
+                                            {% else %}
+                                                <img src="{% static 'images/default_profile.png' %}" alt="default-avatar"
+                                                    class="rounded-circle img-fluid">
+                                            {% endif %}
+                                            <div class="text-center" id="Status">
+                                                {% if profile_data.status == 'staff' %}
+                                                    <p class="status">Staff</p>
+                                                {% elif profile_data.status == 'superuser' %}
+                                                    <p class="status">Superuser</p>
+                                                {% else %}
+                                                    <p class="status">Customer</p>
+                                                {% endif %}
+                                            </div>
+                                            <form method="post" enctype="multipart/form-data">
+                                                {% csrf_token %}
+                                                {{ password_form.non_field_errors }}    
+                                                <div class="d-flex justify-content-center mb-2">
+                                                    <input type="file" name="profile" id="id_profile" value="{{ profile_data.profile }}">
+                                                </div>
+                                            <div class="mb-3">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                     <div class="mb-3">
+                                    <label for="id_full_name" class="form-label">Full Name:</label>
+                                    <input type="text" class="form-control" id="id_full_name" name="full_name"
+                                           value="{{ profile_data.full_name }}" placeholder="Full Name" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="id_email" class="form-label">Email:</label>
+                                    <input type="email" class="form-control" id="id_email" name="email"
+                                           value="{{ profile_data.email }}" placeholder="Email" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="id_username" class="form-label">Username:</label>
+                                    <input type="text" class="form-control" id="id_username" name="username"
+                                           value="{{ profile_data.username }}" placeholder="Username" required>
+                                </div>
+                                    <div class="mb-3">
+                                        <label for="id_contact_number" class="form-label">Phone:</label>
+                                        <input type="text" class="form-control" id="id_contact_number" name="contact_number"
+                                               value="{{ profile_data.contact_number|default_if_none:'' }}" placeholder="Phone">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="id_address" class="form-label">Address:</label>
+                                        <input type="text" class="form-control" id="id_address" name="address"
+                                               value="{{ profile_data.address|default_if_none:'' }}" placeholder="Address">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="id_birthdate" class="form-label">Birth Date:</label>
+                                        {{ profile_form.birthdate }}
+                                    </div>   
+                                    <div class="mb-3">
+                                        <label for="id_old_password">Old Password:</label>
+                                        {{ password_form.old_password }}
+                                        {% for error in password_form.old_password.errors %}
+                                            <div class="text-danger">{{ error }}</div>
+                                            {% endfor %}
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label for="id_new_password1">New Password:</label>
+                                        {{ password_form.new_password1 }}
+                                        {% for error in password_form.new_password1.errors %}
+                                            <div class="text-danger">{{ error }}</div>
+                                        {% endfor %}
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label for="id_new_password2">Confirm New Password:</label>
+                                        {{ password_form.new_password2 }}
+                                        {% for error in password_form.new_password2.errors %}
+                                            <div class="text-danger">{{ error }}</div>
+                                            {% endfor %}
+                                    </div>
+                                    <div class="row">
+                                    <div class="col-6 mx-auto">         
+                                    <button type="submit" class="btn btn-primary btn-success" id="EditProfileButton">Update Profile</button>
+                                    <a href="{% url 'profile' %}" class="btn btn-primary mt-3 btn-danger" id="EditProfileButton">Back</a>                                
+                                </div>
+                            </div>
+                                </li>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </section>
+        {% endblock %}

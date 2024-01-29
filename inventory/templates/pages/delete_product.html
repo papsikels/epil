@@ -1,0 +1,11 @@
+{% extends "pages/index.html" %}
+{% block content %}
+    <div class="damit">
+        <h2>Confirm Deletion</h2>
+        <p>Are you sure you want to delete "{{ costume.name }}"?</p>
+        <form method="post" action="{% url 'delete_product' costume.id %}">
+            {% csrf_token %}
+            <button type="submit">Delete</button>
+        </form>
+    </div>
+{% endblock %}

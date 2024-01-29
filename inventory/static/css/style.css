@@ -1,0 +1,617 @@
+* {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    box-sizing: border-box;
+}
+
+.bookmark-icon {
+    cursor: pointer;
+    padding: 2%;
+    width: 0;
+    font-size: 24px;
+}
+
+
+#status p{
+    color: black;
+}
+
+.status{
+    color: #000;
+}
+
+#rounded-circle,
+.img-fluid{
+    width: 150px; 
+    height: 150px; 
+    object-fit: cover; 
+    border-radius: 50%; 
+    
+}
+
+.damit {
+    position: static;
+    z-index: 1;    
+    width: 80%;
+    margin: 20px auto 0;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+
+.damit input{
+    margin: 0;
+    margin-right: 10px;
+    margin-top: 10px;
+    position: static;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    outline: none;
+}
+
+.search-container {
+    display: flex;
+    justify-content: flex-end; /* Align to the right side */
+    margin-bottom: 10px;
+}
+
+.product-list {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+.product a {
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Inherit the color from the parent */
+}
+
+.product {
+    width: 200px;
+    margin: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+    border: 1px solid #000;
+    position: static;
+    z-index: 1; 
+}
+
+.product:hover {
+    transform: scale(1.05);
+}
+
+.product img {
+    width: 100%;
+    height: 170px;
+    object-fit: cover;
+    object-position: top;
+    border-bottom: 1px solid #ddd;
+}
+
+.product-info {
+    padding: 10px;
+}
+
+.product h3 {
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.product p {
+    margin: 8px 0;
+    font-size: 14px;
+    color: #777;
+}
+
+body {
+    background-image: url('images/body1.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    padding-bottom: 100px;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+nav {
+    background-color: rgba(32, 32, 32, 0.5);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 80px;
+    background-color: #333;
+    color: white;
+    z-index: 999;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0px;
+    margin-right: 70px;
+}
+
+nav li {
+    margin-right: 20px;
+    position: relative;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+}
+
+nav .dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #333;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+}
+
+nav li:hover .dropdown {
+    display: block;
+}
+
+nav .dropdown li {
+    display: block;
+    margin: 10px;
+    white-space: nowrap;
+}
+
+nav li:hover {
+    background-color: #555;
+    padding: 8px;
+}
+
+nav .dropdown li:hover {
+    background-color: #555;
+}
+
+
+.BrandName {
+    color: rgb(255, 255, 255);
+    padding-right: 20px;
+}
+
+.facebookButton,
+.shopeeButton {
+    display: inline-block;
+    position: relative;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.facebookButton span,
+.shopeeButton span {
+    display: none;
+    position: absolute;
+    bottom: 45px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #FFF;
+    color: #000000;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.facebookButton:hover span,
+.shopeeButton:hover span {
+    display: block;
+}
+
+.hero,
+.fer,
+.featured-item,
+.about,
+.slider-img {
+    text-align: center;
+}
+
+.hero h2,
+.fer,
+.contact,
+.about h1,p{
+    color: #fff;
+}
+
+
+.about,
+.slider-img {
+    padding: 40px 0;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.contact {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.aboutus,
+.slider-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.aboutus h1 {
+    color: #FFF;
+}
+
+.aboutus h3 {
+    color: #FFF;
+    font-size: 22px;
+    margin-top: 30px;
+}
+
+.aboutus p {
+    font-size: 20px;
+    line-height: 1.6;
+    color: #FFF;
+    margin-bottom: 40px;
+}
+
+.aboutus ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.aboutus li {
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.hero p,
+.fer,
+.featured-item h3,
+.featured-item p {
+    color: #fff;
+    font-size: 25px;
+}
+
+.hero {
+    padding: 5% 10%;
+    margin-top: 10%;
+    margin-bottom: 15%;
+}
+
+.about {
+    padding: 5% 10%;
+    margin-top: 15%;
+    margin-bottom: 15%;
+}
+
+
+.featured {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    padding: 5% 10%;
+}
+
+.featured-item {
+    width: 100%;
+    max-width: 300px;
+    border: 1px solid #000;
+    border-radius: 10px;
+    overflow: hidden;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(128, 128, 128, 0.8);
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ff8000;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.cta-button:hover {
+    background-color: #ff9933;
+}
+
+
+section {
+    height: 100hv;
+}
+
+.mySlides {
+    display: none;
+    animation: fade 1.5s ease-in-out; 
+  }
+  
+  .slideshow-container {
+    max-width: 1000px;
+    position: relative;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .prev, .next {
+    position: absolute;
+    top: 50%;
+    width: 100px;
+    margin-top: -30px;
+    padding: 16px;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  
+  .prev {
+    left: 10px;
+  }
+  
+  .next {
+    right: 10px;
+  }
+  
+  .prev:hover, .next:hover {
+    background-color: #ff9933;
+  }
+  
+  .numbertext {
+    position: absolute;
+    text-align: center;
+    top: 100%;
+    left: 47%;
+    color: #ffffff;
+    padding: 8px;
+    font-size: 18px; 
+  }
+  
+ 
+
+  .text {
+    position: absolute;
+    top: 90%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    color: #fff;
+    text-align: center;
+    padding: 20px; 
+    font-size: 24px; 
+    font-weight: bold; 
+    background-color: rgba(255, 128, 0, 0.5); 
+}
+
+  
+  .mySlides img {
+    width: 100%;
+    max-width: 400px; 
+    height: auto;
+  }
+
+  .login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+  #EditProfileButton {
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+  }
+
+  .btn-color {
+    background-color: #04AA6D;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+  }
+
+  button:hover {
+    opacity: 0.8;
+  }
+
+    @keyframes fade {
+    from {
+      opacity: 0.4;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 80px;
+    background-color: #333;
+    color: white;
+}
+  
+  @media screen and (max-width: 768px) {
+
+    .hero,
+    .fer,
+    .featured,
+    .featured-item,
+    .about {
+        padding: 5% 2%;
+    }
+
+    .hero{
+       margin-top: 150px;
+    }
+
+    .BrandName{
+        font-size: 12px
+    }
+
+    nav{
+        position: fixed;
+        top: 0;
+        width: 100%;
+    }
+
+    nav li{
+        font-size: 12px;
+    }
+    .slideshow-container {
+      flex-direction: column; 
+    }
+
+
+    .numbertext {
+      position: relative;  
+      top: auto;
+      left: auto;
+      text-align: center;
+      margin-top: 10px; 
+    }
+
+    .text {
+        position: absolute; 
+        top: 90%; 
+        left: 50%; 
+        text-align: center;
+        margin-top: 10px;  
+        padding: 20px;
+        width: 500px;
+    }
+  
+    .mySlides img {
+      width: 100%; 
+
+    }
+  }
+  
+  #explore {
+    text-align: center;
+    margin-bottom: 70px;
+  }
+
+  #explore h1{
+    color: #FFF;
+    margin-top: 0; 
+    margin-bottom: 40px;
+
+  }
+ 
+  .damit {
+    margin: 100px auto;
+    width: 75%;
+ }
+
+ .details-container {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    width: auto;
+ }
+
+ .slider {
+    display: flex;
+}
+
+.slider div {
+    width: 20%; /* Set a fixed width */
+    height: auto;
+    border-radius: 8px;
+    margin-right: 15px;
+    border: 2px solid #000;
+    overflow: hidden; /* Ensure images do not exceed the container size */
+}
+
+.slider img {
+    width: 100%;
+    height: 100%; /* Set a fixed height, or you can use a fixed value like height: 150px; */
+    object-fit: cover; /* Ensure the image covers the entire container */
+    border-radius: 8px;
+}
+ .text-container {
+    flex-grow: 1;
+ }
+
+ .damit .details-container h3, .damit .details-container p {
+    color: black;
+    margin: 20px;
+ }
+
+ .back-button {
+    background-color: #4CAF50; 
+    border: none; 
+    color: white;
+    padding: 10px 20px; 
+    text-align: center; 
+    text-decoration: none; 
+    display: inline-block; 
+    font-size: 16px;
+    margin: 4px 2px; 
+    cursor: pointer; 
+    border-radius: 4px; 
+}
+
+.back-button:hover {
+    background-color: #45a049; 
+}

@@ -1,0 +1,86 @@
+{% extends "pages/index.html" %} 
+{% load static %}
+{% block content %} 
+    <div class="damit">
+        <div class="details-container">
+            <a href="{% if costume.status == 'child' %}{% url 'childpage' %}{% else %}{% url 'adultpage' %}{% endif %}">
+                <button class="back-button">Back to {% if costume.status == 'child' %}Child{% else %}Adult{% endif %} Page</button>
+            </a>            
+            <div class="slider">
+                {% if costume.photo1.url %}
+                    <div><img src="{{ costume.photo1.url }}" alt="{{ costume.name }} - Photo 1"></div>
+                {% endif %}
+                {% if costume.photo2.url and costume.photo2.url is not None %}
+                    <div><img src="{{ costume.photo2.url }}" alt="{{ costume.name }} - Photo 2"></div>
+                {% endif %}
+                {% if costume.photo3.url and costume.photo3.url is not None %}
+                    <div><img src="{{ costume.photo3.url }}" alt="{{ costume.name }} - Photo 3"></div>
+                {% endif %}
+            </div>
+                        <div class="text-container">
+                <h3>{{ costume.name }}</h3>
+                <h3>Description:</h3>
+                <p>{{ costume.description }}</p>
+            </div>
+
+            {% if not request.user.is_superuser and not request.user.is_staff %}
+            <div class="reviews">
+                {% if costume.review_set.exists %}
+                    <h4>My Reviews:</h4>
+                    {% for review in costume.review_set.all %}
+                        {% if request.user.is_authenticated and review.user == request.user %}
+                            <!-- Display the user's review -->
+                            <p>{{ review.comment }} - {{ review.get_user_name }} (Rating: {{ review.rating }}/5)</p>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            </div>
+            {% endif %}
+            
+            <!-- Review form or Edit Review button -->
+            {% if request.user.is_authenticated %}
+                {% if not user_review %}
+                    {% if not request.user.is_superuser and not request.user.is_staff %}
+                        <div id="leave-review-form">
+                            <h4>Leave a Review:</h4>
+                            <form method="post" action="{% url 'product' costume.id %}">
+                                {% csrf_token %}
+                                {{ form.as_p }}
+                                <button type="submit">Submit Review</button>
+                            </form>
+                        </div>
+                        <div id="edit-review-button" style="display: none;">
+                            <h4>Your Review:</h4>
+                            <p id="user-review-info"></p>
+                            <button id="edit-review">Edit Review</button>
+                        </div>
+                    {% endif %}
+                {% else %}
+                    <div id="leave-review-form" style="display: none;">
+                        <h4>Your Review:</h4>
+                        <p>{{ user_review.comment }} - {{ user_review.get_user_name }} (Rating: {{ user_review.rating }}/5)</p>
+                        <button id="edit-review">Edit Review</button>
+                    </div>
+                    <div id="edit-review-button">
+                        <h4>Edit Review:</h4>
+                        <form id="edit-review-form" method="post" action="{% url 'product' costume.id %}">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <button type="submit">Update Review</button>
+                        </form>
+                    </div>
+                {% endif %}
+            {% else %}
+                <p>Login to leave a review.</p>
+            {% endif %}
+
+            <!-- Review list for the current product -->
+                <div class="reviews">
+                    <h4>Review List:</h4>
+                    {% for review in costume.review_set.all %}
+                        <p>{{ review.comment }} - {{ review.get_user_name }} (Rating: {{ review.rating }}/5)</p>
+                    {% endfor %}
+                </div>
+        </div>
+    </div>
+{% endblock %}

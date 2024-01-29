@@ -1,0 +1,126 @@
+{% extends "pages/index.html" %} 
+{% load static %} 
+{% block content %}
+<div class="container">
+  {% if profile_data.status == 'staff' or profile_data.status == 'superuser' %}
+  <div class="damit">
+  <h1>ADMIN PAGES</h1>
+  <h2>Create Costume</h2>
+  <form method="post" enctype="multipart/form-data" action="{% url 'homepage' %}">
+    {% csrf_token %}
+
+    <!-- Costume Name -->
+    <label for="id_name">Name:</label>
+    <input type="text" id="id_name" name="name" required>
+
+    <!-- Costume Description -->
+    <label for="id_description">Description:</label>
+    <textarea id="id_description" name="description" required></textarea>
+
+    <!-- Costume Photos -->
+    <label for="id_photo1">Photo 1:</label>
+    <input type="file" id="id_photo1" name="photo1">
+
+    <label for="id_photo2">Photo 2:</label>
+    <input type="file" id="id_photo2" name="photo2">
+
+    <label for="id_photo3">Photo 3:</label>
+    <input type="file" id="id_photo3" name="photo3">
+
+    <!-- Costume Status -->
+    <label for="id_status">Status:</label>
+    <select id="id_status" name="status" required>
+        <option value="adult">Adult</option>
+        <option value="child">Child</option>
+    </select>
+
+    <!-- Submit Button -->
+    <button type="submit">Save Costume</button>
+</form>
+</div>
+  </div>
+  {% else %}
+  <section class="hero">
+    <h2>Welcome to JB's Corner</h2>
+    <p>
+      <i
+        >Explore premium selections from top brands on our curated platform. As
+        your trusted reseller, satisfaction is guaranteed.</i
+      >
+    </p>
+    <a href="#explore" class="cta-button">Explore Now</a>
+    <a href="#fer" class="cta-button">Shop Now</a>
+  </section>
+
+  <h2 class="fer" id="fer">Featured Products</h2>
+  <section class="featured" id="featured">
+    <div class="featured-item">
+      <h3>Child Costume</h3>
+      <p>
+        Explore our delightful collection of costumes for children. From playful
+        characters to superheroes, find the perfect outfit for your little ones.
+      </p>
+      <a href="{% url 'childpage' %}" class="cta-button">View Collection</a>
+    </div>
+
+    <div class="featured-item">
+      <h3>Adult Costume</h3>
+      <p>
+        Elevate your costume game with our stylish and high-quality adult
+        costumes. Make a statement at your next event with our diverse range of
+        options.
+      </p>
+      <a href="{% url 'adultpage' %}" class="cta-button">View Collection</a>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="aboutus">
+      <h1>About us</h1>
+      <h3>Discover the Magic of Costume with Jb's Corner</h3>
+      <p>
+        At Jb's Corner, we have lots of cool costumes for different occasions.
+        You can be anything you want!
+      </p>
+      <p class="p1">
+        We want shopping for costumes to be fun and easy. We really love
+        costumes, and we want you to enjoy them too.
+      </p>
+      <p>
+        Whether it's a party, Halloween, or a special day, Jb's Corner is here
+        to make your moments special. Check out our cool collections and have
+        fun dressing up!
+      </p>
+      <a href="#explore" class="cta-button">Explore Now</a>
+      <a href="#fer" class="cta-button">Shop Now</a>
+    </div>
+  </section>
+
+  <section id="explore">
+    <h1>Explore a World of Enchanting Costumes for Every Occasion</h1>
+    <div class="slideshow-container">
+      <div class="mySlides">
+        <div class="numbertext">1 / 3</div>
+        <div class="text">Discover Perfect Costumes for Every Adventure</div>
+        <img src="{% static 'images/fan1.png' %}" alt="Slide 1" />
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">2 / 3</div>
+        <div class="text">Explore Adorable Animal Costumes for All Ages</div>
+        <img src="{% static 'images/fan2.png' %}" alt="Slide 2" />
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">3 / 3</div>
+        <div class="text">Find the Perfect Costume for Your Next Adventure</div>
+        <img src="{% static 'images/fan3.png' %}" alt="Slide 3" />
+      </div>
+
+      <a class="prev" onclick="plusSlides(-1)">&#10094; Prev</a>
+      <a class="next" onclick="plusSlides(1)">Next &#10095;</a>
+    </div>
+  </section>
+  {% endif %}
+</div>
+{% endblock %}

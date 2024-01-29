@@ -1,0 +1,46 @@
+{% extends "pages/index.html" %} 
+{% load static %} 
+{% block content %}
+    <div class="damit">
+    <hr>
+    <div class="product-list">
+        {% for costume in adult_costumes %}
+            <div class="product" data-product-id="{{ costume.id }}">
+                <div class="bookmark-icon" onclick="toggleBookmark(this, {{ costume.id }})">
+                    {% if request.user.is_authenticated %}
+                        {% if costume.is_bookmarked_by_current_user %}
+                            &#9733; <!-- Filled star if bookmarked -->
+                        {% else %}
+                            &#9734; <!-- Empty star if not bookmarked -->
+                        {% endif %}
+                    {% else %}
+                        <!-- Handle case where user is not authenticated -->
+                    {% endif %}
+                </div>
+                <a href="{% url 'product' costume.id %}">
+                {% if costume.photo1 %}
+                    <img src="{{ costume.photo1.url }}" alt="Product 1">
+                {% elif costume.photo2 %}
+                    <img src="{{ costume.photo2.url }}" alt="Product 2">
+                {% elif costume.photo3 %}
+                    <img src="{{ costume.photo3.url }}" alt="Product 3">
+                {% else %}
+                    <p>No Image</p>
+                    {% endif %}
+            <div class="product-info">
+                <h3>{{ costume.name }}</h3>
+                <p>Description: {{ costume.description }}</p>
+            </div>
+            </a>
+            {% if request.user.is_authenticated and request.user.is_staff %}
+            <div class="admin-buttons">
+                <a href="{% url 'update_product' costume.id %}">Update</a>
+                <a href="{% url 'delete_product' costume.id %}">Delete</a>
+            </div>
+        {% endif %}
+        </div>
+        {% endfor %}
+        </div>
+    </div>
+    </div>
+    {% endblock %}
